@@ -3,7 +3,7 @@
 #include <cassert>
 
 #include "inc/comb.h"
-#include "inc/perm.h"
+#include "inc/arrangements.h"
 
 using namespace one;
 
@@ -57,7 +57,7 @@ int main()
   while (combins.next()) {
     cCombins += 1;
 
-    auto permus = perm<int>(r);
+    auto permus = arrangements<int>(r);
     while (permus.next()) {
       cPermus += 1;
       for (int i = 0; i < r; ++i) {
@@ -100,7 +100,7 @@ int test0() {
   // 4:  [2, 0, 1]
   // 5:  [2, 1, 0]
 
-  auto permus = perm<int>(r);
+  auto permus = arrangements<int>(r);
 
   assert(permus.next());        // 0
   assertN3(permus.arr, 0, 1, 2);

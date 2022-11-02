@@ -156,13 +156,13 @@ namespace one {
   };
 
 //  template <typename Tint>
-//  class perm {
+//  class arrangements {
 //  public:
 //    Tint * arr;
 //    Tint n, r;
-//    perm(Tint n, Tint r) : arr(nullptr), n(n), r(r) {}
+//    arrangements(Tint n, Tint r) : arr(nullptr), n(n), r(r) {}
 //
-//    ~perm()
+//    arrangementsngements()
 //    {
 //      delete arr;
 //    }

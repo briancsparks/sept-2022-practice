@@ -2,20 +2,20 @@
 // Created by brian on 11/2/2022.
 //
 
-#ifndef INC_2_BASIC_PERM_H
-#define INC_2_BASIC_PERM_H
+#ifndef INC_2_BASIC_ARRANGEMENTS_H
+#define INC_2_BASIC_ARRANGEMENTS_H
 
 #include <cassert>
 
 namespace one {
 
   template <typename Tint>
-  class perm {
+  class arrangements {
   public:
     int * arr;
     int   r;
-    perm(int r): arr(nullptr), r(r) {}
-    ~perm() { delete arr; }
+    arrangements(int r): arr(nullptr), r(r) {}
+    ~arrangements() { delete arr; }
 
     bool init()
     {
@@ -89,4 +89,4 @@ namespace one {
 
 } // one
 
-#endif //INC_2_BASIC_PERM_H
+#endif //INC_2_BASIC_ARRANGEMENTS_H
