@@ -155,43 +155,43 @@ namespace one {
     }
   };
 
-  template <typename Tint>
-  class perm {
-  public:
-    Tint * arr;
-    Tint n, r;
-    perm(Tint n, Tint r) : arr(nullptr), n(n), r(r) {}
-
-    ~perm()
-    {
-      delete arr;
-    }
-
-    bool init()
-    {
-      arr = new Tint[r];
-      return spring0(arr, n, r, arr, 0);
-    }
-
-    bool next()
-    {
-      if (arr == nullptr) {
-        return init();
-      }
-
-      int * last  = arr + r - 1;
-
-      int max = n;
-      for (int * p = last; p >= arr; --p, --max) {
-        *p += 1;
-        if (*p < max) {
-          return spring0(arr, n, r, p, *p);
-        }
-      }
-
-      return false;
-    }
-  };
+//  template <typename Tint>
+//  class perm {
+//  public:
+//    Tint * arr;
+//    Tint n, r;
+//    perm(Tint n, Tint r) : arr(nullptr), n(n), r(r) {}
+//
+//    ~perm()
+//    {
+//      delete arr;
+//    }
+//
+//    bool init()
+//    {
+//      arr = new Tint[r];
+//      return spring0(arr, n, r, arr, 0);
+//    }
+//
+//    bool next()
+//    {
+//      if (arr == nullptr) {
+//        return init();
+//      }
+//
+//      int * last  = arr + r - 1;
+//
+//      int max = n;
+//      for (int * p = last; p >= arr; --p, --max) {
+//        *p += 1;
+//        if (*p < max) {
+//          return spring0(arr, n, r, p, *p);
+//        }
+//      }
+//
+//      return false;
+//    }
+//  };
 
 }
 

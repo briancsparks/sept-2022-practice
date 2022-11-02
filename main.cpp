@@ -1,6 +1,9 @@
+
 #include <iostream>
+#include <cassert>
 
 #include "inc/comb.h"
+#include "inc/perm.h"
 
 using namespace one;
 
@@ -30,8 +33,46 @@ void assertN3(int * ii, int a, int b, int c) {
 // 8:  [1, 3, 4]                       <--   !!! [1, 2, 5]
 // 9:  [2, 3, 4]  <--   !!! [1, 4, 5]  <--   !!! [1, 3, 5]
 
+// 3Permus
+// 0:  [0, 1, 2]
+// 1:  [0, 2, 1]
+// 2:  [1, 0, 2]
+// 3:  [1, 2, 0]
+// 4:  [2, 0, 1]
+// 5:  [2, 1, 0]
 
-int main() {
+int test0();
+
+int main()
+{
+//  test0();
+
+  int n = 5, r = 3;
+  auto combins = comb<int>(n, r);
+
+  int cCombins = 0;
+  int cPermus  = 0;
+
+  std::cout << "Hello, World!" << std::endl;
+  while (combins.next()) {
+    cCombins += 1;
+
+    auto permus = perm<int>(r);
+    while (permus.next()) {
+      cPermus += 1;
+      for (int i = 0; i < r; ++i) {
+        std::cout << combins.arr[permus.arr[i]] /*+1*/ << ", ";
+      }
+      std::cout << std::endl;
+    }
+    std::cout << std::endl;
+//    break;
+  }
+
+  std::cout << "Combins: " << cCombins << ", Permus: " << cPermus << std::endl;
+}
+
+int test0() {
   int n = 5, r = 3;
   auto combins = comb<int>(n, r);
 
@@ -52,34 +93,28 @@ int main() {
   assert(!combins.next());        // 10
 
 
+  // 0:  [0, 1, 2]
+  // 1:  [0, 2, 1]
+  // 2:  [1, 0, 2]
+  // 3:  [1, 2, 0]
+  // 4:  [2, 0, 1]
+  // 5:  [2, 1, 0]
 
-  auto permus = comb<int>(r, r);
+  auto permus = perm<int>(r);
 
   assert(permus.next());        // 0
-//  assertN3(permus.arr, 0, 0, 0);
+  assertN3(permus.arr, 0, 1, 2);
   assert(permus.next());        // 1
+  assertN3(permus.arr, 0, 2, 1);
   assert(permus.next());        // 2
+  assertN3(permus.arr, 1,0,2);
   assert(permus.next());        // 3
+  assertN3(permus.arr, 1,2,0);
   assert(permus.next());        // 4
+  assertN3(permus.arr, 2,0,1);
   assert(permus.next());        // 5
-//  assertN3(permus.arr, 0, 1, 0);
-  assert(permus.next());        // 6
-  assert(permus.next());        // 7
-  assert(permus.next());        // 8
-  assert(permus.next());        // 9
-  assert(permus.next());        // 10
-  for (int i = 0; i < 45; ++i) {
-    assert(permus.next());        // 10
-  }
-  assert(permus.next());        // 10
-  assert(permus.next());        // 10
-  assert(permus.next());        // 10
-  assert(permus.next());        // 10
-  assert(permus.next());        // 10
-  assert(permus.next());        // 10
-  assert(permus.next());        // 10
-  assert(permus.next());        // 10
-  assert(permus.next());        // 10
+  assertN3(permus.arr, 2,1,0);
+  assert(!permus.next());        // 6
 
 
 //  int arr[r];
