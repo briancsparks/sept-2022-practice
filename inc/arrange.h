@@ -2,20 +2,21 @@
 // Created by brian on 11/2/2022.
 //
 
-#ifndef INC_2_BASIC_ARRANGEMENTS_H
-#define INC_2_BASIC_ARRANGEMENTS_H
+#ifndef INC_2_BASIC_ARRANGE_H
+#define INC_2_BASIC_ARRANGE_H
 
 #include <cassert>
 
 namespace one {
 
   template <typename Tint>
-  class arrangements {
+  class arrange {
   public:
     int * arr;
     int   r;
-    arrangements(int r): arr(nullptr), r(r) {}
-    ~arrangements() { delete arr; }
+    int count;
+    arrange(int r): arr(nullptr), r(r), count(-1) {}
+    ~arrange() { delete arr; }
 
     bool init()
     {
@@ -28,6 +29,10 @@ namespace one {
 
     bool next(int * begin = nullptr, int rr = -1)
     {
+      if (begin == nullptr) {
+        count += 1;
+      }
+
       if (arr == nullptr) {
         return init();
       }
@@ -89,4 +94,4 @@ namespace one {
 
 } // one
 
-#endif //INC_2_BASIC_ARRANGEMENTS_H
+#endif //INC_2_BASIC_ARRANGE_H

@@ -2,8 +2,9 @@
 #include <iostream>
 #include <cassert>
 
+#include "inc/perm.h"
 #include "inc/comb.h"
-#include "inc/arrangements.h"
+#include "inc/arrange.h"
 
 using namespace one;
 
@@ -42,11 +43,34 @@ void assertN3(int * ii, int a, int b, int c) {
 // 5:  [2, 1, 0]
 
 int test0();
+int run0();
+int run1();
 
-int main()
-{
+int main() {
 //  test0();
+//  run0();
 
+  return run1();
+}
+
+int run1() {
+  int n = 5, r = 3;
+  auto permus = perm<int>(n, r);
+  int cPermus  = 0;
+
+  while (permus.next()) {
+    cPermus += 1;
+    for (int i = 0; i < r; ++i) {
+      std::cout << permus.arr[i] /*+1*/ << ", ";
+    }
+    std::cout << std::endl;
+  }
+  std::cout << "Permus: " << cPermus << " " << permus.count << " " << permus.combins->count << " " << permus.arrangements->count << std::endl;
+
+  return 0;
+}
+
+int run0() {
   int n = 5, r = 3;
   auto combins = comb<int>(n, r);
 
@@ -57,11 +81,11 @@ int main()
   while (combins.next()) {
     cCombins += 1;
 
-    auto permus = arrangements<int>(r);
-    while (permus.next()) {
+    auto arrangements = arrange<int>(r);
+    while (arrangements.next()) {
       cPermus += 1;
       for (int i = 0; i < r; ++i) {
-        std::cout << combins.arr[permus.arr[i]] /*+1*/ << ", ";
+        std::cout << combins.arr[arrangements.arr[i]] /*+1*/ << ", ";
       }
       std::cout << std::endl;
     }
@@ -70,6 +94,8 @@ int main()
   }
 
   std::cout << "Combins: " << cCombins << ", Permus: " << cPermus << std::endl;
+
+  return 0;
 }
 
 int test0() {
@@ -100,7 +126,7 @@ int test0() {
   // 4:  [2, 0, 1]
   // 5:  [2, 1, 0]
 
-  auto permus = arrangements<int>(r);
+  auto permus = arrange<int>(r);
 
   assert(permus.next());        // 0
   assertN3(permus.arr, 0, 1, 2);

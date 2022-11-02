@@ -122,7 +122,8 @@ namespace one {
   public:
     Tint * arr;
     Tint n, r;
-    comb(Tint n, Tint r) : arr(nullptr), n(n), r(r) {}
+    int count;
+    comb(Tint n, Tint r) : arr(nullptr), n(n), r(r), count(-1) {}
 
     ~comb()
     {
@@ -137,6 +138,8 @@ namespace one {
 
     bool next()
     {
+      count += 1;
+
       if (arr == nullptr) {
         return init();
       }
@@ -156,11 +159,11 @@ namespace one {
   };
 
 //  template <typename Tint>
-//  class arrangements {
+//  class arrange {
 //  public:
 //    Tint * arr;
 //    Tint n, r;
-//    arrangements(Tint n, Tint r) : arr(nullptr), n(n), r(r) {}
+//    arrange(Tint n, Tint r) : arr(nullptr), n(n), r(r) {}
 //
 //    arrangementsngements()
 //    {
