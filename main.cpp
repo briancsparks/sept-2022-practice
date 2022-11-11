@@ -5,6 +5,7 @@
 #include "inc/perm.h"
 #include "inc/comb.h"
 #include "inc/arrange.h"
+#include "inc/maxminificator.h"
 
 using namespace one;
 
@@ -45,12 +46,19 @@ void assertN3(int * ii, int a, int b, int c) {
 int test0();
 int run0();
 int run1();
+int runMx0();
 
 int main() {
 //  test0();
 //  run0();
 
-  return run1();
+  return runMx0();
+}
+
+int runMx0()
+{
+  maxminificator::show();
+  return 0;
 }
 
 int run1() {
